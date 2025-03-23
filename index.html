@@ -14,10 +14,14 @@
             height: 100vh;
             text-align: center;
             position: relative; /* Para el contador en la esquina superior derecha */
+            overflow: hidden; /* Evita el desbordamiento */
         }
-        video {
+        #videoContainer {
             width: 90%;
             max-width: 500px;
+        }
+        video {
+            width: 100%;
             border-radius: 10px;
         }
         /* Estilos para el contador en la esquina superior derecha */
@@ -30,6 +34,7 @@
         }
         #banner {
             margin-top: 10px;
+            width: 100%; /* Asegúrate de que el banner ocupe todo el ancho */
         }
     </style>
 </head>
@@ -52,22 +57,24 @@
     <noscript><a href="/" target="_blank"><img src="//sstatic1.histats.com/0.gif?4939507&101" alt="contadores web" border="0"></a></noscript>
     <!-- Histats.com END -->
 
-    <video id="videoPlayer" controls></video>
+    <div id="videoContainer">
+        <video id="videoPlayer" controls></video>
+
+        <div id="banner">
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '4d06bd948dc63eb0cc533f944fbb0614',
+                    'format' : 'iframe',
+                    'height' : 90,
+                    'width' : 728,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/4d06bd948dc63eb0cc533f944fbb0614/invoke.js"></script>
+        </div>
+    </div>
 
     <script type='text/javascript' src='//pl26197565.effectiveratecpm.com/60/ff/2e/60ff2e652b6c769c7a0dda8fa916f5fe.js'></script>
-
-    <div id="banner">
-        <script type="text/javascript">
-            atOptions = {
-                'key' : '4d06bd948dc63eb0cc533f944fbb0614',
-                'format' : 'iframe',
-                'height' : 90,
-                'width' : 728,
-                'params' : {}
-            };
-        </script>
-        <script type="text/javascript" src="//www.highperformanceformat.com/4d06bd948dc63eb0cc533f944fbb0614/invoke.js"></script>
-    </div>
 
     <script>
         function getParameterByName(name) {
