@@ -13,19 +13,62 @@
             align-items: center;
             height: 100vh;
             text-align: center;
+            position: relative; /* Para el contador en la esquina superior derecha */
         }
         video {
             width: 90%;
             max-width: 500px;
             border-radius: 10px;
         }
+        /* Estilos para el contador en la esquina superior derecha */
+        #histats_counter {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: #fff;
+            font-size: 14px;
+        }
+        #banner {
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
 
+    <!-- Histats.com (div with counter) -->
+    <div id="histats_counter"></div>
+    <!-- Histats.com START (async) -->
+    <script type="text/javascript">
+        var _Hasync= _Hasync|| [];
+        _Hasync.push(['Histats.start', '1,4939507,4,25,200,40,00011111']);
+        _Hasync.push(['Histats.fasi', '1']);
+        _Hasync.push(['Histats.track_hits', '']);
+        (function() {
+            var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
+            hs.src = ('//s10.histats.com/js15_as.js');
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
+        })();
+    </script>
+    <noscript><a href="/" target="_blank"><img src="//sstatic1.histats.com/0.gif?4939507&101" alt="contadores web" border="0"></a></noscript>
+    <!-- Histats.com END -->
+
     <video id="videoPlayer" controls></video>
 
-    <script type='text/javascript' src='//pl26127826.effectiveratecpm.com/1a/de/ea/1adeea205975aa4ce2b6af0a9a8f33d0.js'></script>
+    <script type='text/javascript' src='//pl26197565.effectiveratecpm.com/60/ff/2e/60ff2e652b6c769c7a0dda8fa916f5fe.js'></script>
+
+    <div id="banner">
+        <script type="text/javascript">
+            atOptions = {
+                'key' : '4d06bd948dc63eb0cc533f944fbb0614',
+                'format' : 'iframe',
+                'height' : 90,
+                'width' : 728,
+                'params' : {}
+            };
+        </script>
+        <script type="text/javascript" src="//www.highperformanceformat.com/4d06bd948dc63eb0cc533f944fbb0614/invoke.js"></script>
+    </div>
+
     <script>
         function getParameterByName(name) {
             const urlParams = new URLSearchParams(window.location.search);
