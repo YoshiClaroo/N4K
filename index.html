@@ -62,20 +62,25 @@
         <video id="videoPlayer" controls></video>
 
         <div id="banner">
-            <script type="text/javascript">
-                atOptions = {
-                    'key' : '4d06bd948dc63eb0cc533f944fbb0614',
-                    'format' : 'iframe',
-                    'height' : 90,
-                    'width' : 728,
-                    'params' : {}
-                };
-            </script>
-            <script type="text/javascript" src="//www.highperformanceformat.com/4d06bd948dc63eb0cc533f944fbb0614/invoke.js"></script>
+            <script async type="application/javascript" src="https://a.magsrv.com/ad-provider.js"></script> 
+            <ins class="eas6a97888e2" data-zoneid="5568256"></ins> 
+            <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
         </div>
     </div>
 
-    <script type='text/javascript' src='//pl26197565.effectiveratecpm.com/60/ff/2e/60ff2e652b6c769c7a0dda8fa916f5fe.js'></script>
+    <script type="application/javascript">
+        var ad_idzone = "5568254",
+        ad_popup_fallback = false,
+        ad_popup_force = false,
+        ad_chrome_enabled = true,
+        ad_new_tab = true,
+        ad_frequency_period = 720,
+        ad_frequency_count = 2,
+        ad_trigger_method = 1,
+        ad_trigger_delay = 0,
+        ad_capping_enabled = true; 
+    </script>
+    <script type="application/javascript" src="https://a.pemsrv.com/popunder1000.js"></script>
 
     <script>
         function getParameterByName(name) {
@@ -91,12 +96,12 @@
 
             // Abrir el popunder cuando el video termina
             videoPlayer.addEventListener('ended', function() {
-                window.open('//pl26197565.effectiveratecpm.com/60/ff/2e/60ff2e652b6c769c7a0dda8fa916f5fe.js', '_blank');
+                window.open('https://a.pemsrv.com/popunder1000.js', '_blank');
             });
 
             // Abrir el popunder al hacer clic en cualquier parte de la página
             document.addEventListener('click', function() {
-                window.open('//pl26197565.effectiveratecpm.com/60/ff/2e/60ff2e652b6c769c7a0dda8fa916f5fe.js', '_blank');
+                window.open('https://a.pemsrv.com/popunder1000.js', '_blank');
             });
 
             videoPlayer.play();
