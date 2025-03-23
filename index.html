@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ver Video</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+        video {
+            width: 90%;
+            max-width: 500px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <video id="videoPlayer" controls></video>
+
+    <script type='text/javascript' src='//pl26127826.effectiveratecpm.com/1a/de/ea/1adeea205975aa4ce2b6af0a9a8f33d0.js'></script>
+    <script>
+        function getParameterByName(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        const videoUrl = getParameterByName('url');
+        if (videoUrl) {
+            const videoPlayer = document.getElementById('videoPlayer');
+            videoPlayer.src = videoUrl;
+            videoPlayer.play();
+        } else {
+            document.body.innerHTML = "<h2>Error: No se proporcionó la URL del video.</h2>";
+        }
+    </script>
+
+</body>
+</html>
