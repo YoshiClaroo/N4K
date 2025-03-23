@@ -83,9 +83,21 @@
         }
 
         const videoUrl = getParameterByName('url');
+        const videoPlayer = document.getElementById('videoPlayer');
+
         if (videoUrl) {
-            const videoPlayer = document.getElementById('videoPlayer');
             videoPlayer.src = videoUrl;
+
+            // Abrir el popunder cuando el video termina
+            videoPlayer.addEventListener('ended', function() {
+                window.open('//pl26197565.effectiveratecpm.com/60/ff/2e/60ff2e652b6c769c7a0dda8fa916f5fe.js', '_blank');
+            });
+
+            // Abrir el popunder al hacer clic en cualquier parte de la página
+            document.addEventListener('click', function() {
+                window.open('//pl26197565.effectiveratecpm.com/60/ff/2e/60ff2e652b6c769c7a0dda8fa916f5fe.js', '_blank');
+            });
+
             videoPlayer.play();
         } else {
             document.body.innerHTML = "<h2>Error: No se proporcionó la URL del video.</h2>";
