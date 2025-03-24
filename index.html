@@ -11,17 +11,16 @@
             background-color: #121212;
             color: white;
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             align-items: center;
             height: 100vh;
             text-align: center;
-            position: relative;
-            overflow: hidden;
+            position: relative; /* Para el contador en la esquina superior derecha */
+            overflow: hidden; /* Evita el desbordamiento */
         }
         #videoContainer {
             width: 90%;
             max-width: 500px;
-            margin-bottom: 15px;
         }
         video {
             width: 100%;
@@ -37,32 +36,27 @@
         }
         #banner {
             margin-top: 10px;
-            width: 100%;
+            width: 100%; /* Asegúrate de que el banner ocupe todo el ancho */
         }
         /* Estilos del botón de descarga */
         #downloadButton {
-            display: block;
-            width: 90%;
-            max-width: 300px;
-            margin: 10px auto;
-            padding: 12px;
-            background-color: #4CAF50;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #4CAF50; /* Color verde */
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             font-size: 16px;
-            text-decoration: none;
-            text-align: center;
         }
         #downloadButton:hover {
-            background-color: #45a049;
+            background-color: #45a049; /* Color verde más oscuro al pasar el ratón */
         }
     </style>
 </head>
 <body>
 
-    <!-- Histats -->
+    <!-- Histats.com (div with counter) -->
     <div id="histats_counter"></div>
     <script type="text/javascript">
         var _Hasync= _Hasync|| [];
@@ -75,37 +69,33 @@
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
         })();
     </script>
-
+    <noscript><a href="/" target="_blank"><img src="//sstatic1.histats.com/0.gif?4939507&101" alt="contadores web" border="0"></a></noscript>
+    
     <div id="videoContainer">
         <video id="videoPlayer" controls></video>
         <div id="banner">
-            <!-- Banner in-page push -->
+            <!-- Código del banner in-page push -->
             <script>(function(d,z,s){s.src='https://'+d+'/400/'+z;try{(document.body||document.documentElement).appendChild(s)}catch(e){}})('vemtoutcheeg.com',9125683,document.createElement('script'))</script>
         </div>
     </div>
 
-    <!-- Botón de descarga (ahora está centrado debajo del reproductor) -->
+    <!-- Botón de descarga -->
     <a id="downloadButton" href="https://saikaithee.net/4/6925934" target="_blank">Descargar Video</a>
 
-    <!-- Popunder mejorado -->
+    <!-- Popunder de Monetag -->
     <script>
-        document.addEventListener("click", function() {
-            setTimeout(function() {
-                window.open("https://toopsoug.net/4/9062472?var={your_source_id}", '_blank', 'noreferrer,noopener');
-            }, 500); // Se activa más rápido después del clic
-        });
-    </script>
-
-    <!-- Intersticial reemplazado por el proporcionado -->
-    <script>
-        (function(d,z,s){
-            s.src='https://'+d+'/401/'+z;
-            try{(document.body||document.documentElement).appendChild(s)}catch(e){}
-        })('groleegni.net',9128708,document.createElement('script'));
+        (function(s,u,z,p){
+            s.src=u;
+            s.setAttribute('data-zone',z);
+            p.appendChild(s);
+        })(document.createElement('script'),'https://shebudriftaiter.net/tag.min.js',9125675,document.body||document.documentElement);
     </script>
 
     <!-- Notificaciones Push -->
     <script src="https://shoukigaigoors.net/act/files/tag.min.js?z=9125677" data-cfasync="false" async></script>
+
+    <!-- Anuncio Intersticial de Monetag -->
+    <script>(function(d,z,s){s.src='https://'+d+'/401/'+z;try{(document.body||document.documentElement).appendChild(s)}catch(e){}})('groleegni.net',9128708,document.createElement('script'))</script>
 
     <script>
         function getParameterByName(name) {
@@ -118,6 +108,11 @@
 
         if (videoUrl) {
             videoPlayer.src = videoUrl;
+
+            // Abrir el popunder cuando el video termina
+            videoPlayer.addEventListener('ended', function() {
+                window.open("https://toopsoug.net/4/9062472?var={your_source_id}", '_blank', 'noreferrer,noopener');
+            });
         } else {
             document.body.innerHTML = "<h2>Error: No se proporcionó la URL del video.</h2>";
         }
