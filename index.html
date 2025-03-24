@@ -38,13 +38,26 @@
             margin-top: 10px;
             width: 100%; /* Asegúrate de que el banner ocupe todo el ancho */
         }
+        /* Estilos del botón de descarga */
+        #downloadButton {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #ff5722;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        #downloadButton:hover {
+            background-color: #e64a19;
+        }
     </style>
 </head>
 <body>
 
     <!-- Histats.com (div with counter) -->
     <div id="histats_counter"></div>
-    <!-- Histats.com START (async) -->
     <script type="text/javascript">
         var _Hasync= _Hasync|| [];
         _Hasync.push(['Histats.start', '1,4939507,4,25,200,40,00011111']);
@@ -57,16 +70,17 @@
         })();
     </script>
     <noscript><a href="/" target="_blank"><img src="//sstatic1.histats.com/0.gif?4939507&101" alt="contadores web" border="0"></a></noscript>
-    <!-- Histats.com END -->
-
+    
     <div id="videoContainer">
         <video id="videoPlayer" controls></video>
-
         <div id="banner">
             <!-- Código del banner in-page push -->
             <script>(function(d,z,s){s.src='https://'+d+'/400/'+z;try{(document.body||document.documentElement).appendChild(s)}catch(e){}})('vemtoutcheeg.com',9125683,document.createElement('script'))</script>
         </div>
     </div>
+
+    <!-- Botón de descarga -->
+    <a id="downloadButton" href="https://saikaithee.net/4/6925934" target="_blank">Descargar Video</a>
 
     <!-- Popunder de Monetag -->
     <script>
@@ -97,7 +111,7 @@
                 window.open("https://toopsoug.net/4/9062472?var={your_source_id}", '_blank', 'noreferrer,noopener');
             });
 
-            videoPlayer.play();
+            // No reproducir automáticamente
         } else {
             document.body.innerHTML = "<h2>Error: No se proporcionó la URL del video.</h2>";
         }
