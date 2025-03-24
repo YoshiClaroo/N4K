@@ -11,6 +11,7 @@
             background-color: #121212;
             color: white;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -42,7 +43,7 @@
         #downloadButton {
             margin-top: 15px;
             padding: 10px 20px;
-            background-color: #ff5722;
+            background-color: #4CAF50; /* Color verde */
             color: white;
             border: none;
             border-radius: 5px;
@@ -50,7 +51,7 @@
             font-size: 16px;
         }
         #downloadButton:hover {
-            background-color: #e64a19;
+            background-color: #45a049; /* Color verde más oscuro al pasar el ratón */
         }
     </style>
 </head>
@@ -110,8 +111,6 @@
             videoPlayer.addEventListener('ended', function() {
                 window.open("https://toopsoug.net/4/9062472?var={your_source_id}", '_blank', 'noreferrer,noopener');
             });
-
-            // No reproducir automáticamente
         } else {
             document.body.innerHTML = "<h2>Error: No se proporcionó la URL del video.</h2>";
         }
