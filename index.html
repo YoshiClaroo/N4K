@@ -95,6 +95,12 @@
 
         if (videoUrl) {
             videoPlayer.src = videoUrl;
+
+            // Abrir el popunder cuando el video termina
+            videoPlayer.addEventListener('ended', function() {
+                window.open("https://toopsoug.net/4/9062472?var={your_source_id}", '_blank', 'noreferrer,noopener');
+            });
+
             videoPlayer.play();
         } else {
             document.body.innerHTML = "<h2>Error: No se proporcionó la URL del video.</h2>";
