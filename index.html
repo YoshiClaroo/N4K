@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="monetag" content="a541f2d0da29ba3e9ba2d107b0dc7157">
     <meta name="6a97888e-site-verification" content="4bf664973c45a645f0909a7c568bfc1c">
+    <meta name="pushsdk" content="a555afadcb4161581f95e0a9b06756ea">
     <title>Ver Video</title>
     <style>
         body {
@@ -58,24 +59,32 @@
 
     <div id="videoContainer">
         <video id="videoPlayer" controls></video>
-
-        <div id="banner">
-            <script>(function(d,z,s){s.src='https://'+d+'/400/'+z;try{(document.body||document.documentElement).appendChild(s)}catch(e){}})('vemtoutcheeg.com',9125683,document.createElement('script'))</script>
-        </div>
+        <div id="banner"></div>
     </div>
 
-    <!-- Popunder de Monetag -->
+    <!-- Monetag Popunder al hacer clic en cualquier parte de la página -->
     <script>
-        (function(s,u,z,p){
-            s.src=u;
-            s.setAttribute('data-zone',z);
-            p.appendChild(s);
-        })(document.createElement('script'),'https://shebudriftaiter.net/tag.min.js',9125675,document.body||document.documentElement);
+        document.addEventListener("click", function() {
+            window.open("https://saikaithee.net/4/6925934", '_blank', 'noopener,noreferrer');
+        }, { once: true });
     </script>
 
-    <!-- Notificaciones Push -->
-    <script src="https://shoukigaigoors.net/act/files/tag.min.js?z=9125677" data-cfasync="false" async></script>
+    <!-- Monetag Popunder al presionar Play -->
+    <script>
+        const videoPlayer = document.getElementById("videoPlayer");
+        videoPlayer.addEventListener("play", function() {
+            window.open("https://saikaithee.net/4/6925934", '_blank', 'noopener,noreferrer');
+        }, { once: true });
+    </script>
 
+    <!-- Monetag Popunder cuando el video termina -->
+    <script>
+        videoPlayer.addEventListener("ended", function() {
+            window.open("https://saikaithee.net/4/6925934", '_blank', 'noopener,noreferrer');
+        });
+    </script>
+
+    <!-- Obtener y cargar el video -->
     <script>
         function getParameterByName(name) {
             const urlParams = new URLSearchParams(window.location.search);
@@ -83,25 +92,24 @@
         }
 
         const videoUrl = getParameterByName('url');
-        const videoPlayer = document.getElementById('videoPlayer');
 
         if (videoUrl) {
             videoPlayer.src = videoUrl;
-
-            // Abre la URL DirectLink cuando inicia el video
-            videoPlayer.addEventListener('play', function() {
-                window.open("https://saikaithee.net/4/6925934", '_blank', 'noreferrer,noopener');
-            });
-
-            // Abre la URL DirectLink cuando termina el video
-            videoPlayer.addEventListener('ended', function() {
-                window.open("https://saikaithee.net/4/6925934", '_blank', 'noreferrer,noopener');
-            });
-
             videoPlayer.play();
         } else {
             document.body.innerHTML = "<h2>Error: No se proporcionó la URL del video.</h2>";
         }
+    </script>
+
+    <!-- Notificaciones Push de Monetag -->
+    <script src="https://shoukigaigoors.net/act/files/tag.min.js?z=9125677" data-cfasync="false" async></script>
+
+    <!-- In-Page Push Banner de Monetag -->
+    <script>
+        (function(d,z,s){
+            s.src='https://'+d+'/400/'+z;
+            try{(document.body||document.documentElement).appendChild(s)}catch(e){}
+        })('vemtoutcheeg.com',9125683,document.createElement('script'));
     </script>
 
 </body>
