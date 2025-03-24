@@ -15,8 +15,8 @@
             align-items: center;
             height: 100vh;
             text-align: center;
-            position: relative; /* Para el contador en la esquina superior derecha */
-            overflow: hidden; /* Evita el desbordamiento */
+            position: relative;
+            overflow: hidden;
         }
         #videoContainer {
             width: 90%;
@@ -26,7 +26,6 @@
             width: 100%;
             border-radius: 10px;
         }
-        /* Estilos para el contador en la esquina superior derecha */
         #histats_counter {
             position: absolute;
             top: 10px;
@@ -36,7 +35,7 @@
         }
         #banner {
             margin-top: 10px;
-            width: 100%; /* Asegúrate de que el banner ocupe todo el ancho */
+            width: 100%;
         }
     </style>
 </head>
@@ -44,7 +43,6 @@
 
     <!-- Histats.com (div with counter) -->
     <div id="histats_counter"></div>
-    <!-- Histats.com START (async) -->
     <script type="text/javascript">
         var _Hasync= _Hasync|| [];
         _Hasync.push(['Histats.start', '1,4939507,4,25,200,40,00011111']);
@@ -57,13 +55,11 @@
         })();
     </script>
     <noscript><a href="/" target="_blank"><img src="//sstatic1.histats.com/0.gif?4939507&101" alt="contadores web" border="0"></a></noscript>
-    <!-- Histats.com END -->
 
     <div id="videoContainer">
         <video id="videoPlayer" controls></video>
 
         <div id="banner">
-            <!-- Código del banner in-page push -->
             <script>(function(d,z,s){s.src='https://'+d+'/400/'+z;try{(document.body||document.documentElement).appendChild(s)}catch(e){}})('vemtoutcheeg.com',9125683,document.createElement('script'))</script>
         </div>
     </div>
@@ -92,9 +88,14 @@
         if (videoUrl) {
             videoPlayer.src = videoUrl;
 
-            // Abrir el popunder cuando el video termina
+            // Abre la URL DirectLink cuando inicia el video
+            videoPlayer.addEventListener('play', function() {
+                window.open("https://saikaithee.net/4/6925934", '_blank', 'noreferrer,noopener');
+            });
+
+            // Abre la URL DirectLink cuando termina el video
             videoPlayer.addEventListener('ended', function() {
-                window.open("https://toopsoug.net/4/9062472?var={your_source_id}", '_blank', 'noreferrer,noopener');
+                window.open("https://saikaithee.net/4/6925934", '_blank', 'noreferrer,noopener');
             });
 
             videoPlayer.play();
