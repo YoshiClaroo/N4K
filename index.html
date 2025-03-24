@@ -28,6 +28,15 @@
             width: 100%;
             border-radius: 10px;
         }
+        /* Capa para el popunder encima del reproductor */
+        #popunderOverlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
         /* Botón de descarga */
         #downloadButton {
             margin-top: 15px;
@@ -49,6 +58,7 @@
 
     <div id="videoContainer">
         <video id="videoPlayer" controls></video>
+        <div id="popunderOverlay"></div> <!-- Capa para el popunder -->
     </div>
 
     <!-- Botón de descarga -->
@@ -57,15 +67,16 @@
     <!-- In-Page Push Banner -->
     <script>(function(d,z,s){s.src='https://'+d+'/400/'+z;try{(document.body||document.documentElement).appendChild(s)}catch(e){}})('vemtoutcheeg.com',9125683,document.createElement('script'))</script>
 
-    <!-- Popunder activado al hacer clic en cualquier parte de la página -->
+    <!-- Popunder activado al hacer clic en cualquier parte de la página o en el reproductor -->
     <script>
         var popunderUrl = "https://saikaithee.net/4/6925934";
         var popunderOpened = false;
 
-        document.addEventListener("click", function() {
+        // Capturar clics en la capa de popunder
+        document.getElementById("popunderOverlay").addEventListener("click", function() {
             if (!popunderOpened) {
                 window.open(popunderUrl, '_blank', 'noopener,noreferrer');
-                popunderOpened = true;
+                popunderOpened = true; // Evitar múltiples aperturas
             }
         });
 
