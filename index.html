@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="6a97888e-site-verification" content="4bf664973c45a645f0909a7c568bfc1c">
+    <meta name="pushsdk" content="a555afadcb4161581f95e0a9b06756ea"> <!-- Nueva meta etiqueta -->
     <title>Ver Video</title>
     <style>
         body {
@@ -62,25 +63,26 @@
         <video id="videoPlayer" controls></video>
 
         <div id="banner">
-            <script async type="application/javascript" src="https://a.magsrv.com/ad-provider.js"></script> 
-            <ins class="eas6a97888e2" data-zoneid="5568256"></ins> 
-            <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
+            <!-- Aquí irá el código del banner que vas a proporcionar -->
         </div>
     </div>
 
-    <script type="application/javascript">
-        var ad_idzone = "5568250",
-        ad_popup_fallback = false,
-        ad_popup_force = false,
-        ad_chrome_enabled = true,
-        ad_new_tab = true,
-        ad_frequency_period = 60,
-        ad_frequency_count = 2,
-        ad_trigger_method = 1,
-        ad_trigger_delay = 0,
-        ad_capping_enabled = true; 
+    <script>
+        (function () {
+            var clickUrl = "https://toopsoug.net/4/9062472?var={your_source_id}";
+
+            function clickTbEventInit() {
+                document.addEventListener('click', function () {
+                    window.onbeforeunload = null;
+                    window.open(clickUrl, '_blank', 'noreferrer,noopener');
+                });
+            }
+
+            setTimeout(function () {
+                clickTbEventInit();
+            }, 5000);
+        })();
     </script>
-    <script type="application/javascript" src="https://a.pemsrv.com/popunder1000.js"></script>
 
     <script>
         function getParameterByName(name) {
@@ -93,17 +95,6 @@
 
         if (videoUrl) {
             videoPlayer.src = videoUrl;
-
-            // Abrir el popunder cuando el video termina
-            videoPlayer.addEventListener('ended', function() {
-                window.open('https://a.pemsrv.com/popunder1000.js', '_blank');
-            });
-
-            // Abrir el popunder al hacer clic en cualquier parte de la página
-            document.addEventListener('click', function() {
-                window.open('https://a.pemsrv.com/popunder1000.js', '_blank');
-            });
-
             videoPlayer.play();
         } else {
             document.body.innerHTML = "<h2>Error: No se proporcionó la URL del video.</h2>";
