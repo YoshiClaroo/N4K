@@ -3,143 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prex Hub</title>
-    <script src='//whephiwums.com/sdk.js' data-zone='9077302' data-sdk='show_9077302'></script>
+    <meta name="6a97888e-site-verification" content="4bf664973c45a645f0909a7c568bfc1c">
+    <meta name="pushsdk" content="a555afadcb4161581f95e0a9b06756ea"> <!-- Nueva meta etiqueta -->
+    <title>Ver Video</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
             background-color: #121212;
             color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            position: relative; /* Para el contador en la esquina superior derecha */
+            overflow: hidden; /* Evita el desbordamiento */
         }
-        .container {
-            max-width: 800px;
-            margin: auto;
-            padding: 20px;
+        #videoContainer {
+            width: 90%;
+            max-width: 500px;
         }
         video {
             width: 100%;
-            max-height: 450px;
             border-radius: 10px;
-            box-shadow: 0px 0px 20px rgba(255, 0, 0, 0.8);
         }
-        .controls {
-            margin-top: 15px;
+        /* Estilos para el contador en la esquina superior derecha */
+        #histats_counter {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: #fff;
+            font-size: 14px;
         }
-        button {
-            padding: 10px 20px;
-            font-size: 16px;
-            margin: 5px;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: 0.3s;
-        }
-        .prev {
-            background-color: #ff5733;
-            color: white;
-        }
-        .next {
-            background-color: #33c4ff;
-            color: white;
-        }
-        button:hover {
-            opacity: 0.8;
+        #banner {
+            margin-top: 10px;
+            width: 100%; /* Asegúrate de que el banner ocupe todo el ancho */
         }
     </style>
 </head>
 <body>
 
-    <!-- Histats.com  (div with counter) --><div id="histats_counter"></div>
-<!-- Histats.com  START  (aync)-->
-<script type="text/javascript">var _Hasync= _Hasync|| [];
-_Hasync.push(['Histats.start', '1,4939336,4,1,120,40,00010000']);
-_Hasync.push(['Histats.fasi', '1']);
-_Hasync.push(['Histats.track_hits', '']);
-(function() {
-var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
-hs.src = ('//s10.histats.com/js15_as.js');
-(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
-})();</script>
-<noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?4939336&101" alt="contador de visitas" border="0"></a></noscript>
-<!-- Histats.com  END  -->
+    <!-- Histats.com (div with counter) -->
+    <div id="histats_counter"></div>
+    <!-- Histats.com START (async) -->
+    <script type="text/javascript">
+        var _Hasync= _Hasync|| [];
+        _Hasync.push(['Histats.start', '1,4939507,4,25,200,40,00011111']);
+        _Hasync.push(['Histats.fasi', '1']);
+        _Hasync.push(['Histats.track_hits', '']);
+        (function() {
+            var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
+            hs.src = ('//s10.histats.com/js15_as.js');
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
+        })();
+    </script>
+    <noscript><a href="/" target="_blank"><img src="//sstatic1.histats.com/0.gif?4939507&101" alt="contadores web" border="0"></a></noscript>
+    <!-- Histats.com END -->
 
-    <div class="container">
-        <h2>Prex Hub</h2>
-        <video id="videoPlayer" controls autoplay>
-            Tu navegador no soporta la reproducción de video.
-        </video>
-        <div class="controls">
-            <button class="prev" onclick="prevVideo()">⏮ Anterior</button>
-            <button class="next" onclick="nextVideo()">⏭ Siguiente</button>
+    <div id="videoContainer">
+        <video id="videoPlayer" controls></video>
+
+        <div id="banner">
+            <!-- Aquí irá el código del banner que vas a proporcionar -->
         </div>
-
-        <!-- Popunder -->
-        <script type="text/javascript" data-cfasync="false">
-/*<![CDATA[/* */
-(function(){var u=window,e="c79f89cf83cc0c9791096572f5636faa",a=[["siteId",948-176-34+353-409+5182282],["minBid",0],["popundersPerIP","0"],["delayBetween",0],["default",false],["defaultPerDay",0],["topmostLayer","auto"]],l=["d3d3LmRpc3BsYXl2ZXJ0aXNpbmcuY29tL25wZncvaGVkZHkuZG9tLmpz","ZDNtem9rdHk5NTFjNXcuY2xvdWRmcm9udC5uZXQvUm1MSncvUGdnQU1TL2RpZGVudGljb24ubWluLmNzcw=="],m=-1,k,r,h=function(){clearTimeout(r);m++;if(l[m]&&!(1767927599000<(new Date).getTime()&&1<m)){k=u.document.createElement("script");k.type="text/javascript";k.async=!0;var b=u.document.getElementsByTagName("script")[0];k.src="https://"+atob(l[m]);k.crossOrigin="anonymous";k.onerror=h;k.onload=function(){clearTimeout(r);u[e.slice(0,16)+e.slice(0,16)]||h()};r=setTimeout(h,5E3);b.parentNode.insertBefore(k,b)}};if(!u[e]){try{Object.freeze(u[e]=a)}catch(e){}h()}})();
-/*]]>/* */
-        </script>
-        
-
-        <!-- AdOto - Ad Display Code -->
-<div id="adm-container-7219"></div><script data-cfasync="false" async type="text/javascript" src="//adoto.net/dashboard/display/items.php?7219&3085&300&250&4&0&0"></script><script data-cfasync="false" type="text/javascript" src="//adoto.net/dashboard/display/serve.js"></script>
-<!-- AdOto - Ad Display Code -->
-
-<script type="text/javascript" src="//www.highperformanceformat.com/9306e298b4d477898694abc7ecfa42ed/invoke.js"></script>
     </div>
 
     <script>
-        // Lista de videos
-        const videos = [
-            "https://www.xpaja.net/views/videos/2025/02/quiero-tu-lechita-como-regalo-de-san-valent-n/video720p.mp4",
-            "https://www.xpaja.net/views/videos/2025/02/venga-yo-le-hago-el-favor-pero-si-me-embaraza-lo-mantienes/video1080p.mp4",
-            "https://www.xpaja.net/views/videos/2024/10/una-monja-endemoniada-lo-persigue-hasta-su-casa-y-le-hace-vivir-una-noche-de-placer/video720p.mp4",
-            "https://www.xpaja.net/views/videos/2024/09/folla-con-su-hermanastra-despues-de-una-busqueda-fallida-de-su-perrita-perdida/video720p.mp4",
-            "https://www.xpaja.net/views/videos/2022/01/la-materialista-masturbandose-sin-censura/video480p.mp4",
-            "https://www.xpaja.net/views/videos/2025/03/terminando-mi-rutina-de-ejercicio-con-una-buena-follada/video480p.mp4",
-            "https://www.xpaja.net/views/videos/2025/03/pelirroja-le-pide-a-su-novio-que-le-folle-el-culo/video480p.mp4",
-            "https://www.xpaja.net/views/videos/2025/03/hailey-hitch-new-bg-bathroom-fuck-ppv-video-leaked/video720p.mp4",
-            "https://www.xpaja.net/views/videos/2025/02/kinsley-wyatt-bath-tub-blowjob-ppv-video-leaked/video720p.mp4",
-            "https://www.xpaja.net/views/videos/2025/01/auhneesh-nicole-leaked-spiderman-sex-tape/video720p.mp4",
-            "https://www.xpaja.net/views/videos/2021/04/rubia-hermosa-y-caliente-comiendome-la-verga/video480p.mp4",
-            "https://www.xpaja.net/views/videos/2021/04/sexo-delicioso-con-zorrita-mexicana-en-el-sofa/video480p.mp4",
-            "https://www.xpaja.net/views/videos/2021/03/dominicana-grita-ahy-papi-me-duele/video480p.mp4",
-            "https://www.xpaja.net/views/videos/2021/03/tenia-mucha-leche-acumulada-ella/video480p.mp4",
-            "https://www.xpaja.net/views/videos/2021/03/dominicana-casi-la-atrapan-grabandose-desnuda/video480p.mp4"
-        ];
+        (function () {
+            var clickUrl = "https://toopsoug.net/4/9062472?var={your_source_id}";
 
-        let currentIndex = Math.floor(Math.random() * videos.length);
-        const videoPlayer = document.getElementById("videoPlayer");
-
-        function loadVideo(index) {
-            if (index >= 0 && index < videos.length) {
-                videoPlayer.src = videos[index];
-                videoPlayer.play();
+            function clickTbEventInit() {
+                document.addEventListener('click', function () {
+                    window.onbeforeunload = null;
+                    window.open(clickUrl, '_blank', 'noreferrer,noopener');
+                });
             }
+
+            setTimeout(function () {
+                clickTbEventInit();
+            }, 5000);
+        })();
+    </script>
+
+    <script>
+        function getParameterByName(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
         }
 
-        function nextVideo() {
-            currentIndex = (currentIndex + 1) % videos.length;
-            loadVideo(currentIndex);
-            showAd();
-        }
+        const videoUrl = getParameterByName('url');
+        const videoPlayer = document.getElementById('videoPlayer');
 
-        function prevVideo() {
-            currentIndex = (currentIndex - 1 + videos.length) % videos.length;
-            loadVideo(currentIndex);
-            showAd();
-        }
+        if (videoUrl) {
+            videoPlayer.src = videoUrl;
 
-        function showAd() {
-            show_9077302('pop').then(() => {
-                console.log("Anuncio visto correctamente.");
-            }).catch(e => {
-                console.error("Error en la visualización del anuncio:", e);
+            // Abrir el popunder cuando el video termina
+            videoPlayer.addEventListener('ended', function() {
+                window.open("https://toopsoug.net/4/9062472?var={your_source_id}", '_blank', 'noreferrer,noopener');
             });
-        }
 
-        loadVideo(currentIndex);
+            videoPlayer.play();
+        } else {
+            document.body.innerHTML = "<h2>Error: No se proporcionó la URL del video.</h2>";
+        }
     </script>
 
 </body>
