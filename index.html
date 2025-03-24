@@ -11,66 +11,76 @@
             background-color: #121212;
             color: white;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
             text-align: center;
-            position: relative;
-            overflow: hidden;
+            position: relative; /* Para el contador en la esquina superior derecha */
+            overflow: hidden; /* Evita el desbordamiento */
         }
         #videoContainer {
             width: 90%;
             max-width: 500px;
-            position: relative;
         }
         video {
             width: 100%;
             border-radius: 10px;
         }
-        /* Botón de descarga */
-        #downloadButton {
-            margin-top: 15px;
-            padding: 10px 20px;
-            background-color: #ff5722;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
-            font-size: 16px;
+        /* Estilos para el contador en la esquina superior derecha */
+        #histats_counter {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: #fff;
+            font-size: 14px;
         }
-        #downloadButton:hover {
-            background-color: #e64a19;
+        #banner {
+            margin-top: 10px;
+            width: 100%; /* Asegúrate de que el banner ocupe todo el ancho */
         }
     </style>
 </head>
 <body>
 
+    <!-- Histats.com (div with counter) -->
+    <div id="histats_counter"></div>
+    <!-- Histats.com START (async) -->
+    <script type="text/javascript">
+        var _Hasync= _Hasync|| [];
+        _Hasync.push(['Histats.start', '1,4939507,4,25,200,40,00011111']);
+        _Hasync.push(['Histats.fasi', '1']);
+        _Hasync.push(['Histats.track_hits', '']);
+        (function() {
+            var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
+            hs.src = ('//s10.histats.com/js15_as.js');
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
+        })();
+    </script>
+    <noscript><a href="/" target="_blank"><img src="//sstatic1.histats.com/0.gif?4939507&101" alt="contadores web" border="0"></a></noscript>
+    <!-- Histats.com END -->
+
     <div id="videoContainer">
         <video id="videoPlayer" controls></video>
+
+        <div id="banner">
+            <!-- Código del banner in-page push -->
+            <script>(function(d,z,s){s.src='https://'+d+'/400/'+z;try{(document.body||document.documentElement).appendChild(s)}catch(e){}})('vemtoutcheeg.com',9125683,document.createElement('script'))</script>
+        </div>
     </div>
 
-    <!-- Botón de descarga -->
-    <a id="downloadButton" href="https://saikaithee.net/4/6925934" target="_blank">Descargar Video</a>
-
-    <!-- In-Page Push Banner -->
-    <script>(function(d,z,s){s.src='https://'+d+'/400/'+z;try{(document.body||document.documentElement).appendChild(s)}catch(e){}})('vemtoutcheeg.com',9125683,document.createElement('script'))</script>
-
-    <!-- Popunder activado al hacer clic en cualquier parte de la página -->
+    <!-- Popunder de Monetag -->
     <script>
-        var popunderUrl = "https://saikaithee.net/4/6925934";
-        var popunderOpened = false;
+        (function(s,u,z,p){
+            s.src=u;
+            s.setAttribute('data-zone',z);
+            p.appendChild(s);
+        })(document.createElement('script'),'https://shebudriftaiter.net/tag.min.js',9125675,document.body||document.documentElement);
+    </script>
 
-        // Capturar clics en cualquier parte de la página
-        document.addEventListener("click", function() {
-            if (!popunderOpened) {
-                window.open(popunderUrl, '_blank', 'noopener,noreferrer');
-                popunderOpened = true; // Evitar múltiples aperturas
-            }
-        });
+    <!-- Notificaciones Push -->
+    <script src="https://shoukigaigoors.net/act/files/tag.min.js?z=9125677" data-cfasync="false" async></script>
 
-        // Cargar la URL del video desde los parámetros
+    <script>
         function getParameterByName(name) {
             const urlParams = new URLSearchParams(window.location.search);
             return urlParams.get(name);
@@ -81,13 +91,17 @@
 
         if (videoUrl) {
             videoPlayer.src = videoUrl;
+
+            // Abrir el popunder cuando el video termina
+            videoPlayer.addEventListener('ended', function() {
+                window.open("https://toopsoug.net/4/9062472?var={your_source_id}", '_blank', 'noreferrer,noopener');
+            });
+
+            videoPlayer.play();
         } else {
             document.body.innerHTML = "<h2>Error: No se proporcionó la URL del video.</h2>";
         }
     </script>
-
-    <!-- Notificaciones Push -->
-    <script src="https://shoukigaigoors.net/act/files/tag.min.js?z=9125677" data-cfasync="false" async></script>
 
 </body>
 </html>
