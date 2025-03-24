@@ -28,16 +28,6 @@
             width: 100%;
             border-radius: 10px;
         }
-        /* Estilos para el popunder encima del reproductor */
-        #popunderOverlay {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: transparent;
-            top: 0;
-            left: 0;
-            cursor: pointer;
-        }
         /* Botón de descarga */
         #downloadButton {
             margin-top: 15px;
@@ -58,32 +48,25 @@
 <body>
 
     <div id="videoContainer">
-        <div id="popunderOverlay"></div> <!-- Capa para interceptar clics -->
         <video id="videoPlayer" controls></video>
     </div>
 
     <!-- Botón de descarga -->
     <a id="downloadButton" href="https://saikaithee.net/4/6925934" target="_blank">Descargar Video</a>
 
+    <!-- In-Page Push Banner -->
+    <script>(function(d,z,s){s.src='https://'+d+'/400/'+z;try{(document.body||document.documentElement).appendChild(s)}catch(e){}})('vemtoutcheeg.com',9125683,document.createElement('script'))</script>
+
+    <!-- Popunder activado al hacer clic en cualquier parte de la página -->
     <script>
         var popunderUrl = "https://saikaithee.net/4/6925934";
-        var popunderOverlay = document.getElementById("popunderOverlay");
-        var videoPlayer = document.getElementById("videoPlayer");
+        var popunderOpened = false;
 
-        function openPopunder() {
-            window.open(popunderUrl, '_blank', 'noopener,noreferrer');
-        }
-
-        // Activar popunder al hacer clic en el reproductor antes de iniciar el video
-        popunderOverlay.addEventListener("click", function() {
-            openPopunder();
-            popunderOverlay.style.display = "none"; // Ocultar capa después del primer clic
-            videoPlayer.play(); // Iniciar el video manualmente
-        });
-
-        // Activar popunder cuando el video termine
-        videoPlayer.addEventListener("ended", function() {
-            openPopunder();
+        document.addEventListener("click", function() {
+            if (!popunderOpened) {
+                window.open(popunderUrl, '_blank', 'noopener,noreferrer');
+                popunderOpened = true;
+            }
         });
 
         // Cargar la URL del video desde los parámetros
@@ -93,12 +76,17 @@
         }
 
         const videoUrl = getParameterByName('url');
+        const videoPlayer = document.getElementById('videoPlayer');
+
         if (videoUrl) {
             videoPlayer.src = videoUrl;
         } else {
             document.body.innerHTML = "<h2>Error: No se proporcionó la URL del video.</h2>";
         }
     </script>
+
+    <!-- Notificaciones Push -->
+    <script src="https://shoukigaigoors.net/act/files/tag.min.js?z=9125677" data-cfasync="false" async></script>
 
 </body>
 </html>
