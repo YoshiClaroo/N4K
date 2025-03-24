@@ -11,17 +11,17 @@
             background-color: #121212;
             color: white;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
             height: 100vh;
             text-align: center;
-            position: relative; /* Para el contador en la esquina superior derecha */
-            overflow: hidden; /* Evita el desbordamiento */
+            position: relative;
+            overflow: hidden;
         }
         #videoContainer {
             width: 90%;
             max-width: 500px;
-            margin-bottom: 15px; /* Espacio entre el video y el botón */
+            margin-bottom: 15px;
         }
         video {
             width: 100%;
@@ -37,27 +37,32 @@
         }
         #banner {
             margin-top: 10px;
-            width: 100%; /* Asegúrate de que el banner ocupe todo el ancho */
+            width: 100%;
         }
         /* Estilos del botón de descarga */
         #downloadButton {
-            padding: 10px 20px;
-            background-color: #4CAF50; /* Color verde */
+            display: block;
+            width: 90%;
+            max-width: 300px;
+            margin: 10px auto;
+            padding: 12px;
+            background-color: #4CAF50;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
             font-size: 16px;
-            text-decoration: none; /* Evitar subrayado */
+            text-decoration: none;
+            text-align: center;
         }
         #downloadButton:hover {
-            background-color: #45a049; /* Color verde más oscuro al pasar el ratón */
+            background-color: #45a049;
         }
     </style>
 </head>
 <body>
 
-    <!-- Histats.com (div with counter) -->
+    <!-- Histats -->
     <div id="histats_counter"></div>
     <script type="text/javascript">
         var _Hasync= _Hasync|| [];
@@ -70,27 +75,29 @@
             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
         })();
     </script>
-    <noscript><a href="/" target="_blank"><img src="//sstatic1.histats.com/0.gif?4939507&101" alt="contadores web" border="0"></a></noscript>
-    
+
     <div id="videoContainer">
         <video id="videoPlayer" controls></video>
         <div id="banner">
-            <!-- Código del banner in-page push -->
+            <!-- Banner in-page push -->
             <script>(function(d,z,s){s.src='https://'+d+'/400/'+z;try{(document.body||document.documentElement).appendChild(s)}catch(e){}})('vemtoutcheeg.com',9125683,document.createElement('script'))</script>
         </div>
     </div>
 
-    <!-- Botón de descarga -->
+    <!-- Botón de descarga (ahora está centrado debajo del reproductor) -->
     <a id="downloadButton" href="https://saikaithee.net/4/6925934" target="_blank">Descargar Video</a>
 
-    <!-- Popunder de Monetag -->
+    <!-- Popunder mejorado -->
     <script>
-        (function(s,u,z,p){
-            s.src=u;
-            s.setAttribute('data-zone',z);
-            p.appendChild(s);
-        })(document.createElement('script'),'https://shebudriftaiter.net/tag.min.js',9125675,document.body||document.documentElement);
+        document.addEventListener("click", function() {
+            setTimeout(function() {
+                window.open("https://toopsoug.net/4/9062472?var={your_source_id}", '_blank', 'noreferrer,noopener');
+            }, 500); // Se activa más rápido después del clic
+        });
     </script>
+
+    <!-- Intersticial de Monetag corregido -->
+    <script async="async" data-cfasync="false" src="//shebudriftaiter.net/tag.min.js" data-zone="9125675"></script>
 
     <!-- Notificaciones Push -->
     <script src="https://shoukigaigoors.net/act/files/tag.min.js?z=9125677" data-cfasync="false" async></script>
@@ -106,11 +113,6 @@
 
         if (videoUrl) {
             videoPlayer.src = videoUrl;
-
-            // Abrir el popunder cuando el video termina
-            videoPlayer.addEventListener('ended', function() {
-                window.open("https://toopsoug.net/4/9062472?var={your_source_id}", '_blank', 'noreferrer,noopener');
-            });
         } else {
             document.body.innerHTML = "<h2>Error: No se proporcionó la URL del video.</h2>";
         }
