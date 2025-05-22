@@ -1,43 +1,57 @@
-const { MongoClient } = require('mongodb');
+const { createClient } = require('@supabase/supabase-js');
 
-const uri = "mongodb+srv://n4k_user:7BgIIyjXuE78ScRC@cluster0.ehGufGu.mongodb.net/n4k_db?retryWrites=true&w=majority&appName=Cluster0";
+// Configuración con tus datos
+const supabaseUrl = 'https://dmprrlqhmrrwzqlsezbg.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRtcHJybHFobXJyd3pxbHNlemJnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc4ODAzNDEsImV4cCI6MjA2MzQ1NjM0MX0.Uol0S3a8o_VRuTbvZMn4kuk2dDp-pj_7tgU-lOsigxM';
 
-exports.handler = async (event, context) => {
-    // Solo acepta solicitudes POST
-    if (event.httpMethod !== "POST") {
-        return {
-            statusCode: 405,
-            body: JSON.stringify({ error: "Método no permitido" })
-        };
-    }
+const supabase = createClient(supabaseUrl, supabaseKey);
 
-    const client = new MongoClient(uri);
+exports.handler = async (event) => {
+  // Solo acepta POST
+  if (event.httpMethod !== 'POST') {
+    return { 
+      statusCode: 405, 
+      body: JSON.stringify({ error: 'Método no permitido' }) 
+    };
+  }
+
+  try {
+    const { videoUrl, redirectUrl = '' } = JSON.parse(event.body);
     
-    try {
-        await client.connect();
-        const { videoUrl, redirectUrl } = JSON.parse(event.body);
-        const id = Math.random().toString(36).substring(2, 7); // Genera ID como "d73j2"
-
-        const db = client.db("n4k_db");
-        await db.collection("urls").insertOne({
-            id,
-            videoUrl,
-            redirectUrl: redirectUrl || "",
-            createdAt: new Date()
-        });
-
-        return {
-            statusCode: 200,
-            body: JSON.stringify({ id }), // Asegúrate de devolver { id }
-            headers: { 'Content-Type': 'application/json' }
-        };
-
-    } catch (error) {
-        return {
-            statusCode: 500,
-            body: JSON.stringify({ error: error.message })
-        };
-    } finally {
-        await client.close();
+    // Validación .mp4
+    if (!videoUrl.endsWith('.mp4')) {
+      return {
+        statusCode: 400,
+        body: JSON.stringify({ error: 'La URL debe terminar en .mp4' })
+      };
     }
+
+    const id = Math.random().toString(36).substring(2, 7);
+
+    // Inserta en Supabase
+    const { error } = await supabase
+      .from('urls')
+      .insert({ 
+        id,
+        video_url: videoUrl,
+        redirect_url: redirectUrl 
+      });
+
+    if (error) throw error;
+
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ id }),
+      headers: { 'Content-Type': 'application/json' }
+    };
+
+  } catch (error) {
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ 
+        error: 'Error al generar URL',
+        details: error.message 
+      })
+    };
+  }
 };
