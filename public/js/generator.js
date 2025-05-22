@@ -3,7 +3,7 @@ document.getElementById('generateBtn').addEventListener('click', async () => {
     const redirectUrl = document.getElementById('redirectUrl').value.trim();
 
     if (!videoUrl.endsWith('.mp4')) {
-        alert("¡La URL del video debe terminar en .mp4!");
+        alert("¡La URL debe terminar en .mp4!");
         return;
     }
 
@@ -14,10 +14,24 @@ document.getElementById('generateBtn').addEventListener('click', async () => {
             body: JSON.stringify({ videoUrl, redirectUrl })
         });
 
-        const data = await response.json(); // Parsear la respuesta como JSON
+        const data = await response.json();
 
-        if (!response.ok) {
-            throw new Error(data.error || "Error al generar URL");
+        // Verifica si la respuesta incluye el ID
+        if (!data.id) {
+            throw new Error("No se recibió un ID válido");
         }
 
-        const generatedUrl = `https://n4k.netl
+        const generatedUrl = `https://n4k.netlify.app/${data.id}`;
+        document.getElementById('generatedUrl').value = generatedUrl;
+        document.getElementById('result').style.display = 'block';
+
+        document.getElementById('copyBtn').addEventListener('click', () => {
+            navigator.clipboard.writeText(generatedUrl);
+            alert("¡URL copiada!");
+        });
+
+    } catch (error) {
+        alert(`Error: ${error.message}`);
+        console.error("Detalles del error:", error);
+    }
+});
