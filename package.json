@@ -1,0 +1,6 @@
+{
+  "name": "n4k-generator",
+  "dependencies": {
+    "mongodb": "^4.0.0"
+  }
+}
