@@ -1,53 +1,72 @@
-document.getElementById('generateBtn').addEventListener('click', async () => {
-  const btn = document.getElementById('generateBtn')
-  const resultDiv = document.getElementById('result')
-  const videoUrl = document.getElementById('videoUrl').value.trim()
-  const redirectUrl = document.getElementById('redirectUrl').value.trim() || ''
+document.getElementById('generateBtn').addEventListener('click', async function() {
+  const btn = this;
+  const videoInput = document.getElementById('videoUrl');
+  const redirectInput = document.getElementById('redirectUrl');
+  const resultDiv = document.getElementById('result');
+  const loadingIndicator = document.getElementById('loading');
+  const generatedUrlInput = document.getElementById('generatedUrl');
+  const copyBtn = document.getElementById('copyBtn');
 
-  // Reset UI
-  btn.disabled = true
-  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generando...'
-  resultDiv.style.display = 'none'
+  // 1. Validación inicial
+  const videoUrl = videoInput.value.trim();
+  const redirectUrl = redirectInput.value.trim() || '';
+
+  if (!videoUrl.endsWith('.mp4')) {
+    alert('❌ La URL debe terminar en .mp4');
+    videoInput.focus();
+    return;
+  }
+
+  // 2. Estado de carga
+  btn.disabled = true;
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generando...';
+  resultDiv.style.display = 'none';
+  loadingIndicator.style.display = 'block';
 
   try {
-    // Validación frontend
-    if (!videoUrl.endsWith('.mp4')) {
-      throw new Error('La URL debe terminar en .mp4')
-    }
-
+    // 3. Llamada a la API
     const response = await fetch('/.netlify/functions/api', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ videoUrl, redirectUrl })
-    })
+      body: JSON.stringify({ 
+        videoUrl, 
+        redirectUrl 
+      })
+    });
 
-    const data = await response.json()
-
+    // 4. Manejo de la respuesta
     if (!response.ok) {
-      throw new Error(data.error || 'Error desconocido')
+      const errorData = await response.json();
+      throw new Error(errorData.error || 'Error en el servidor');
     }
 
-    if (!data.id) {
-      throw new Error('La API no devolvió un ID válido')
+    const { id } = await response.json();
+
+    if (!id) {
+      throw new Error('No se recibió un ID válido');
     }
 
-    // Muestra resultado
-    const generatedUrl = `https://n4k.netlify.app/${data.id}`
-    document.getElementById('generatedUrl').value = generatedUrl
-    resultDiv.style.display = 'block'
+    // 5. Mostrar resultado
+    const fullUrl = `https://n4k.netlify.app/${id}`;
+    generatedUrlInput.value = fullUrl;
+    resultDiv.style.display = 'block';
 
-    // Configura copiado
-    document.getElementById('copyBtn').onclick = () => {
-      navigator.clipboard.writeText(generatedUrl)
-        .then(() => alert('URL copiada!'))
-        .catch(() => alert('Error al copiar'))
-    }
+    // 6. Configurar botón de copiar
+    copyBtn.onclick = function() {
+      navigator.clipboard.writeText(fullUrl)
+        .then(() => alert('✅ URL copiada!'))
+        .catch(() => alert('❌ No se pudo copiar'));
+    };
 
   } catch (error) {
-    console.error('Error completo:', error)
-    alert(`Error: ${error.message}`)
+    // 7. Manejo de errores
+    console.error('Error en generación:', error);
+    alert(`Error: ${error.message}`);
+    
   } finally {
-    btn.innerHTML = '<i class="fas fa-link"></i> Generar URL'
-    btn.disabled = false
+    // 8. Restaurar UI
+    btn.innerHTML = '<i class="fas fa-link"></i> Generar URL';
+    btn.disabled = false;
+    loadingIndicator.style.display = 'none';
   }
-})
+});
