@@ -1,6 +1,6 @@
 const { MongoClient } = require('mongodb');
 
-const uri = "TU_CONNECTION_STRING_ATLAS"; // Reemplaza con tu string de conexión
+const uri = "mongodb+srv://n4k_user:7BgIIyjXuE78ScRC@cluster0.ehGufGu.mongodb.net/n4k_db?retryWrites=true&w=majority&appName=Cluster0"; // Reemplaza con tu string de conexión
 
 exports.handler = async (event, context) => {
     const client = new MongoClient(uri);
