@@ -1,2 +1,22 @@
 [build]
+  command = "npm install"
+  publish = "public"
   functions = "netlify/functions"
+
+[build.environment]
+  NODE_VERSION = "16"
+
+[context.production.environment]
+  MONGODB_URI = "tu_connection_string_atlas"
+
+# Redirecciones para SPA (Single Page Application)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Manejo de 404
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404
