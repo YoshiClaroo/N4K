@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reproductor N4K</title>
+    <style>
+        body {
+            background-color: #121212;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            cursor: pointer;
+        }
+        video {
+            max-width: 90%;
+            max-height: 90vh;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <video id="videoPlayer" controls autoplay muted></video>
+
+    <script src="/js/player.js"></script>
+</body>
+</html>
