@@ -1,58 +1,53 @@
 document.getElementById('generateBtn').addEventListener('click', async () => {
-    const videoUrl = document.getElementById('videoUrl').value.trim();
-    const redirectUrl = document.getElementById('redirectUrl').value.trim() || '';
-    const resultDiv = document.getElementById('result');
-    const generatedUrlInput = document.getElementById('generatedUrl');
-    const copyBtn = document.getElementById('copyBtn');
+  const btn = document.getElementById('generateBtn')
+  const resultDiv = document.getElementById('result')
+  const videoUrl = document.getElementById('videoUrl').value.trim()
+  const redirectUrl = document.getElementById('redirectUrl').value.trim() || ''
 
-    // Reset UI
-    resultDiv.style.display = 'none';
-    generatedUrlInput.value = '';
-    copyBtn.onclick = null;
+  // Reset UI
+  btn.disabled = true
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generando...'
+  resultDiv.style.display = 'none'
 
-    // Validación .mp4
+  try {
+    // Validación frontend
     if (!videoUrl.endsWith('.mp4')) {
-        alert("❌ La URL debe terminar en .mp4");
-        return;
+      throw new Error('La URL debe terminar en .mp4')
     }
 
-    try {
-        // Muestra loader (opcional)
-        document.getElementById('generateBtn').innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generando...';
+    const response = await fetch('/.netlify/functions/api', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ videoUrl, redirectUrl })
+    })
 
-        const response = await fetch('/.netlify/functions/api', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ videoUrl, redirectUrl })
-        });
+    const data = await response.json()
 
-        const data = await response.json();
-
-        if (!response.ok) {
-            throw new Error(data.error || "Error en el servidor");
-        }
-
-        if (!data.id) {
-            throw new Error("No se recibió un ID válido");
-        }
-
-        // Construye y muestra la URL
-        const generatedUrl = `https://n4k.netlify.app/${data.id}`;
-        generatedUrlInput.value = generatedUrl;
-        resultDiv.style.display = 'block';
-
-        // Configura el botón de copiar
-        copyBtn.onclick = () => {
-            navigator.clipboard.writeText(generatedUrl)
-                .then(() => alert('✅ URL copiada al portapapeles'))
-                .catch(() => alert('❌ Error al copiar'));
-        };
-
-    } catch (error) {
-        console.error("Error completo:", error);
-        alert(`⚠️ ${error.message}`);
-    } finally {
-        // Restaura el botón
-        document.getElementById('generateBtn').innerHTML = '<i class="fas fa-link"></i> Generar URL';
+    if (!response.ok) {
+      throw new Error(data.error || 'Error desconocido')
     }
-});
+
+    if (!data.id) {
+      throw new Error('La API no devolvió un ID válido')
+    }
+
+    // Muestra resultado
+    const generatedUrl = `https://n4k.netlify.app/${data.id}`
+    document.getElementById('generatedUrl').value = generatedUrl
+    resultDiv.style.display = 'block'
+
+    // Configura copiado
+    document.getElementById('copyBtn').onclick = () => {
+      navigator.clipboard.writeText(generatedUrl)
+        .then(() => alert('URL copiada!'))
+        .catch(() => alert('Error al copiar'))
+    }
+
+  } catch (error) {
+    console.error('Error completo:', error)
+    alert(`Error: ${error.message}`)
+  } finally {
+    btn.innerHTML = '<i class="fas fa-link"></i> Generar URL'
+    btn.disabled = false
+  }
+})
