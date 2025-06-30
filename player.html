@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reproductor de Video</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+            cursor: pointer;
+        }
+        
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+        
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            margin-bottom: 30px;
+            background-color: #000;
+            border-radius: 5px;
+        }
+        
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .btn {
+            background-color: #4267B2; /* Color de Facebook */
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+        
+        .btn:hover {
+            background-color: #365899;
+        }
+        
+        .volume-notice {
+            margin-top: 15px;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Reproductor de Video</h1>
+        
+        <div class="video-container">
+            <video id="videoPlayer" controls autoplay muted>
+                Tu navegador no soporta el elemento de video.
+            </video>
+        </div>
+        
+        <p class="volume-notice">El video comenzó silenciado. Haz clic en el icono de volumen para activar el sonido.</p>
+        
+        <a href="#" id="facebookBtn" class="btn">Únete a nuestro grupo de Facebook</a>
+    </div>
+
+    <script>
+        // Obtener parámetros de la URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const videoUrl = urlParams.get('video');
+        const redirectUrl = urlParams.get('redirect');
+        
+        // Configurar el reproductor de video
+        const videoPlayer = document.getElementById('videoPlayer');
+        if (videoUrl) {
+            videoPlayer.src = decodeURIComponent(videoUrl);
+            
+            // Forzar autoplay en algunos navegadores que lo requieren
+            videoPlayer.play().catch(error => {
+                console.log('Autoplay no permitido:', error);
+                // Mostrar mensaje para que el usuario interactúe
+                alert('Por favor, haz clic en el video para comenzar la reproducción');
+            });
+        } else {
+            videoPlayer.innerHTML = '<p>No se ha proporcionado un video válido</p>';
+        }
+        
+        // Configurar el botón de Facebook (tú pondrás la URL después)
+        const facebookBtn = document.getElementById('facebookBtn');
+        facebookBtn.href = "#"; // Puedes cambiarlo luego
+        
+        // Función de redirección
+        function redirectToSmartLink() {
+            if (redirectUrl) {
+                window.location.href = decodeURIComponent(redirectUrl);
+            }
+        }
+        
+        // Redirigir al finalizar el video
+        videoPlayer.addEventListener('ended', function() {
+            redirectToSmartLink();
+        });
+        
+        // Redirigir al hacer clic (solo una vez por sesión)
+        document.addEventListener('click', function(e) {
+            // No redirigir si el clic fue en los controles del video
+            if (e.target.tagName === 'VIDEO' || e.target.parentElement.tagName === 'VIDEO') {
+                return;
+            }
+            
+            // Verificar si ya se ha redirigido por clic en esta sesión
+            if (!sessionStorage.getItem('clickRedirected')) {
+                sessionStorage.setItem('clickRedirected', 'true');
+                redirectToSmartLink();
+            }
+        });
+        
+        // Opcional: Prevenir clic derecho/menú contextual
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+    </script>
+</body>
+</html>
