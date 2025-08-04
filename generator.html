@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador N4K</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 25px;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+        }
+        h1 {
+            color: #1877f2;
+            margin-bottom: 20px;
+        }
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #1877f2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #166fe5;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #e8f4fd;
+            border-radius: 5px;
+        }
+        .url-box {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .url-box input {
+            flex: 1;
+            background: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔗 Generador Videyy</h1>
+        <input type="text" id="videoUrl" placeholder="Pega URL del video (ej: https://ejemplo.com/video.mp4)">
+        <button onclick="generateUrl()">Generar Enlace</button>
+        <div id="result">
+            <p>Ingresa una URL válida para generar</p>
+        </div>
+    </div>
+
+    <script>
+        function generateUrl() {
+            const videoUrl = document.getElementById('videoUrl').value.trim();
+            const resultDiv = document.getElementById('result');
+            
+            if (!videoUrl || !videoUrl.startsWith('http')) {
+                resultDiv.innerHTML = '<p style="color:red;">⚠️ ¡URL debe comenzar con http:// o https://!</p>';
+                return;
+            }
+
+            // Genera ID único + codifica URL
+            const randomId = "vid_" + Math.random().toString(36).substring(2, 8);
+            const generatedUrl = `https://n4k.netlify.app/index.html?id=${randomId}&src=${encodeURIComponent(videoUrl)}`;
+            
+            resultDiv.innerHTML = `
+                <p style="color:green;">✅ ¡Enlace generado!</p>
+                <div class="url-box">
+                    <input type="text" value="${generatedUrl}" id="generatedUrl" readonly>
+                    <button onclick="copyUrl()">Copiar</button>
+                </div>
+                <p><a href="${generatedUrl}" target="_blank">Probar enlace</a></p>
+            `;
+        }
+
+        function copyUrl() {
+            const urlInput = document.getElementById('generatedUrl');
+            urlInput.select();
+            document.execCommand('copy');
+            alert('¡Copiado al portapapeles!');
+        }
+    </script>
+</body>
+</html>
